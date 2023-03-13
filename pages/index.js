@@ -1,15 +1,11 @@
-import List from "../components/List"
-import Card from "../components/Card"
+import Header from "../components/Header"
+import Board from "../components/Board"
 
-export default function Home() {
+export default function Main() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>  
-
-      <List />
-      <Card />
-    </div>
+    <>     
+      <Header />   
+      <Board />   
+    </>
   )
 }
