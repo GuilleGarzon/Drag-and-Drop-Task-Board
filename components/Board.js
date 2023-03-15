@@ -5,25 +5,25 @@ import Card from "../components/Card"
 const todoList = [
   {
     text: 'tarea 1 Implementar inicio de sesión',
-    key: 'todoList-task-1'
+    id: 'todoList-task-1'
   },
   {
     text: 'tarea 2 Implementar inicio de sesión',
-    key: 'todoList-task-2'
+    id: 'todoList-task-2'
   }
 ]
 
 const inProgressList = [
   {
     text: 'inprogress Implementar inicio de sesión',
-    key: 'inProgressList-task-1'
+    id: 'inProgressList-task-1'
   }
 ]
 
 const doneList = [
   {
     text: 'done Implementar inicio de sesión',
-    key: 'doneList-task-1'
+    id: 'doneList-task-1'
   }
 ]
 
@@ -38,7 +38,8 @@ export default function Board() {
     setTimeout(() => {
       const listOfListsClone = structuredClone(listOfLists)
       listOfListsClone.inProgressList.push({
-        text: 'ola k ase'
+        text: 'ola k ase',
+        id: crypto.randomUUID()
       })
       setListOfLists(listOfListsClone)
     }, 5000)
@@ -56,27 +57,27 @@ export default function Board() {
         >
           {
             listOfLists.todoList.map((item, index) => (
-              <Card { ...item } key={index} />
+              <Card { ...item } key={item.id} />
             ))
           }        
         </List>
 
         <List
-          name="TODO"
+          name="In Progress"
         >
           {
             listOfLists.inProgressList.map((item, index) => (
-              <Card { ...item } key={index} />
+              <Card { ...item } key={item.id} />
             ))
           }        
         </List>
 
         <List
-          name="TODO"
+          name="Done"
         >
           {
             listOfLists.doneList.map((item, index) => (
-              <Card { ...item } key={index} />
+              <Card { ...item } key={item.id} />
             ))
           }        
         </List>
