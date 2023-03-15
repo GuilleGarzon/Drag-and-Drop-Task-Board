@@ -28,22 +28,23 @@ const doneList = [
 ]
 
 export default function Board() {
+
+  const [dragged, setDragged] = useState(null)
+
   const [listOfLists, setListOfLists] = useState({
     todoList,
     inProgressList,
     doneList
-  })
+  })  
 
-  useEffect(() => {
-    setTimeout(() => {
-      const listOfListsClone = structuredClone(listOfLists)
-      listOfListsClone.inProgressList.push({
-        text: 'ola k ase',
-        id: crypto.randomUUID()
-      })
-      setListOfLists(listOfListsClone)
-    }, 5000)
-  }, [])
+  function handleDrop(event) {
+    event.preventDefault()
+    const list = event.currentTarget.dataset.list
+    const listOfListsClone = structuredClone(listOfLists)
+    listOfListsClone[list].push(dragged)
+    setListOfLists(listOfListsClone)
+    console.log(event)
+  }
 
   return (
     <div className="p-4">
@@ -54,30 +55,36 @@ export default function Board() {
       <main className="flex justify-between gap-4">
         <List
           name="TODO"
+          handleDrop={ handleDrop }
+          id="todoList"
         >
           {
             listOfLists.todoList.map((item, index) => (
-              <Card { ...item } key={item.id} />
+              <Card setDragged={ setDragged } { ...item } key={item.id} />
             ))
           }        
         </List>
 
         <List
           name="In Progress"
+          handleDrop={ handleDrop }
+          id="inProgressList"
         >
           {
             listOfLists.inProgressList.map((item, index) => (
-              <Card { ...item } key={item.id} />
+              <Card setDragged={ setDragged } { ...item } key={item.id} />
             ))
           }        
         </List>
 
         <List
           name="Done"
+          handleDrop={ handleDrop }
+          id="doneList"
         >
           {
             listOfLists.doneList.map((item, index) => (
-              <Card { ...item } key={item.id} />
+              <Card setDragged={ setDragged } { ...item } key={item.id} />
             ))
           }        
         </List>
