@@ -4,25 +4,25 @@ import Card from "../components/Card"
 
 const todoList = [
   {
-    text: 'tarea 1 Implementar inicio de sesión',
+    text: 'Registrarse',
     id: 'todoList-task-1'
   },
   {
-    text: 'tarea 2 Implementar inicio de sesión',
+    text: 'Iniciar Sesión',
     id: 'todoList-task-2'
   }
 ]
 
 const inProgressList = [
   {
-    text: 'inprogress Implementar inicio de sesión',
+    text: 'Añadir otras actividades',
     id: 'inProgressList-task-1'
   }
 ]
 
 const doneList = [
   {
-    text: 'done Implementar inicio de sesión',
+    text: 'Realizar drag and drop',
     id: 'doneList-task-1'
   }
 ]
