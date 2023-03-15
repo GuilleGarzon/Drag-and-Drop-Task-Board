@@ -13,7 +13,7 @@ export default function Card({ text, id, setDragged, list }) {
     // console.log(id);
   }
   return (
-    <div  draggable onDragStart={ handleDragStart } className='bg-slate-100 text-slate-900 rounded-md p-3 flex flex-col gap-4 hover:cursor-move'> 
+    <div  draggable onDragStart={ handleDragStart } className='bg-white text-slate-900 rounded-md p-3 flex flex-col gap-4 hover:cursor-grab'> 
       <div className='flex justify-between'>
         <p className='font-medium'>{ text }</p>        
         <Image src="/static/icons/edit.svg" width={20} height={20} alt="" />
