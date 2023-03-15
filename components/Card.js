@@ -1,10 +1,14 @@
 import Image from "next/image"
 
 export default function Card({ text, id, setDragged, list }) {
-  function handleDragStart() {
-    setDragged({     
+  function handleDragStart(event) {
+
+    setDragged({
+      data: {     
         text,
         id          
+      },
+      list: event.target.closest('[data-list]').dataset.list
     })
     // console.log(id);
   }

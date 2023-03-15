@@ -41,7 +41,9 @@ export default function Board() {
     event.preventDefault()
     const list = event.currentTarget.dataset.list
     const listOfListsClone = structuredClone(listOfLists)
-    listOfListsClone[list].push(dragged)
+    const newList = listOfListsClone[dragged.list].filter(item => item.id !== dragged.data.id)
+    listOfListsClone[dragged.list] = newList
+    listOfListsClone[list].push(dragged.data)
     setListOfLists(listOfListsClone)
     console.log(event)
   }
